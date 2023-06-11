@@ -15,9 +15,9 @@ def get_filters():
     Asks user to specify a city, month, and day to analyze.
 
     Returns:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) city: name of the city to analyze
+        (str) month: name of the month to filter by, or "all" to apply no month filter
+        (str) day: name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Welcome! Explore the dataset on US Bikeshare Usage.',
          '\nWe have data on the following cities: Chicago, New York City, and Washington.')
@@ -84,14 +84,14 @@ def get_filters():
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
-    Assess the data for any missing or duplicated values.
 
     Args:
-        (str) city - name of the city to analyze
-        (str) month - name of the month to filter by, or "all" to apply no month filter
-        (str) day - name of the day of week to filter by, or "all" to apply no day filter
+        (str) city: Name of the city to analyze
+        (str) month: Name of the month to filter by, or "all" to apply no month filter
+        (str) day: Name of the day of week to filter by, or "all" to apply no day filter
+        
     Returns:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (pandas.DataFrame) df: Pandas DataFrame containing city data filtered by month and day
     """
     print('Loading the {} Bikeshare Data Filtered for Month: {}, Day: {}.'
           .format(city.title(), month.title(),
@@ -144,10 +144,16 @@ def load_data(city, month, day):
 
 def user_stats(df):
     """
-    Displays statistics on bikeshare users.
-    
+    Display statistics on bikeshare user demographics.
+
+    This function provides insights into the user type count, gender count, and 
+    birth year statistics of bikeshare users.
+
     Args:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (pandas.DataFrame) df: Pandas DataFrame containing city data filtered by month and day
+
+    Returns:
+        None. The function prints the statistics directly to the console.
     """
 
     print('\nCalculating User Statistics...\n')
@@ -183,10 +189,16 @@ def user_stats(df):
 
 def time_stats(df):
     """
-    Displays statistics on the most frequent times of travel.
-    
+    Display statistics on the most frequent times of travel.
+
+    This function analyzes a Pandas DataFrame containing city data filtered by month and day to determine 
+    the most popular month, day of the week, and hour of the day for travel.
+
     Args:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (pandas.DataFrame) df: A Pandas DataFrame containing city data filtered by month and day.
+
+    Returns:
+        None. The function prints the statistics directly to the console.
     """
 
     print('\nCalculating Trends in City Bike Usage\n',
@@ -218,10 +230,13 @@ def time_stats(df):
 
 def station_stats(df):
     """
-    Displays statistics on the most popular stations and trip.
-    
+    Display statistics on the most popular stations and travel routes used.
+
     Args:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (pandas.DataFrame) df: A Pandas DataFrame containing city data filtered by month and day.
+
+    Returns:
+        None. The function prints the statistics directly to the console.
     """
 
     print('\nTrends in Stations and Travel Routes Used...\n')
@@ -257,10 +272,14 @@ def station_stats(df):
     print('-'*79)
 
 def trip_duration_stats(df):
-    """Displays statistics on the total and average trip duration.
+    """
+    Displays statistics on the total and average trip duration.
     
     Args:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (pandas.DataFrame) df: Pandas DataFrame containing city data filtered by month and day
+
+    Returns:
+        None. The function prints the statistics directly to the console.
     """
 
     print('\nTrends in Trip duration...\n')
@@ -285,12 +304,22 @@ def trip_duration_stats(df):
 
 def relative_duration_stats(city, df):
     """
-    Provides relevent additional statistics:
-    Trip duration in relation to start station, user type, gender, and age
+    Provide additional statistics on trip duration in relation to start station, user type, gender, and age.
+
+    This function analyzes a Pandas DataFrame containing city data filtered by month and day to provide the following statistics:
+    - Top three stations with the highest average trip duration.
+    - Average trip duration by user type.
+    - Average trip duration by gender.
+    - Correlation between trip duration and age.
     
     Args:
-        df - Pandas DataFrame containing city data filtered by month and day
+        (str) city: The name of city being analyzed
+        (pandas.DataFrame) df: Pandas DataFrame containing city data filtered by month and day
+
+    Returns:
+        None. The function prints the statistics directly to the console.
     """
+    
     print('\nAdditional Statistics...\n')
     start_time = time.time()
     
