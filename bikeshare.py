@@ -6,7 +6,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-# declaring the month and day lists for list for refernce
+# declaring the cities, month, and day lists for list for future refernce
+cities = ['chicago', 'new york city', 'washington']
 months = ['january', 'february', 'march', 'april', 'may', 'june']
 days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
 
@@ -34,7 +35,7 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    
+
     print('Welcome! Explore the dataset on US Bikeshare Usage.',
          '\nWe have data on the following cities: Chicago, New York City, and Washington.')
     
@@ -319,26 +320,6 @@ def relative_duration_stats(city, df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*79)
 
-def individual_data(city, start):
-    """
-    Provides the raw individual data of 5 users.
-    
-    Args:
-      (str) City - name of city being analysed
-      (int) start - numerical index
-    """
-    # retrieve the raw dataset
-    df = pd.read_csv(CITY_DATA[city])
-    
-    # Print the dictionary in the desired format
-    n = 5
-    while n > 0:
-        for key, value in df.iloc[start].to_dict().items():
-            print(f"{key}: {value}")
-        print('-'*79)
-        start += 1
-        n -= 1
-
 def main():
     while True:
         city, month, day = get_filters()
@@ -354,13 +335,10 @@ def main():
             # diplay raw data to user if requested
             i = 0
             while True:
-                view_data = str(input("\nWould you like to view 5 Users' trip data? (yes/no)\n"))
-                if view_data not in ['yes', 'no']:
-                    print('Invalid input. Enter yes or no.')
-                elif view_data == 'yes':
-                    individual_data(city, i)
-                else:
+                view_data = str(input("\nWould you like to view 5 Users' trip data? (yes/no)\n")).lower()
+                elif view_data != 'yes':
                     break
+                print(tabulate(pd.read_csv(CITY_DATA[city]).iloc[np.arange(0+i,5+i), 1:], headers ="keys"))
                 i += 5
         else:
             print('Filtered dataset is empty. Restart the program to select new filters.')
