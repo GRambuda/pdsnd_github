@@ -15,3 +15,4 @@ bikeshare.py
 ### Credits
 Stack Overflow. (2018). Python Notes For Professionals. Retrieved from https://goalkicker.com/PythonBook/
 
+Cui, Y. (2022, February 2). How to Write Proper Docstrings for a Python Function. Retrieved June 7, 2023, from Medium website: https://betterprogramming.pub/how-to-write-proper-docstrings-for-a-python-function-7c40b8d2e153
