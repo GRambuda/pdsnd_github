@@ -10,6 +10,21 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 months = ['january', 'february', 'march', 'april', 'may', 'june']
 days = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
 
+def check_entry(prompt, valid_entries):
+    while True:
+        try:
+            entry = str(input(prompt)).lower() if type(valid_entries[0]) == str else int(input(prompt)) # Get user input
+
+            while entry not in valid_entries: # Prompt the user again if an invalid entry is given
+                print("Invalid input provided.  Input should either be: ",
+                    ", ".join(str(x) for x in valid_entries),".")
+                entry = str(input(prompt)).lower() if type(valid_entries[0]) == str else int(input(prompt))
+
+            return entry
+        except ValueError:
+            print('ValueError raised. Please enter {}.'
+                  .format("an integer" if type(valid_entries[0]) == int else "a string"))
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
