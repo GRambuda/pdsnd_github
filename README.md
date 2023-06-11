@@ -1,17 +1,18 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
-
 ### Date created
-Include the date you created this project and README file.
+10 June 2023
 
 ### Project Title
-Replace the Project Title
+Explore US Bikeshare Data
 
 ### Description
-Describe what your project is about and what it does
+Bicycle-sharing systems **allow users to rent bicycles on a very short-term basis for a price**. This allows people to borrow a bike from point A and return it at point B, though they can also return it to the same location if they'd like to just go for a ride. Regardless, each bike can serve several users per day.
+
+In this project, data provided by [Motivate](https://www.motivateco.com/), a bike share system provider for many major cities in the United States, is used to uncover bike share usage patterns. We use Python to assess the system usage between three large cities: Chicago, New York City, and Washington, DC.
 
 ### Files used
-Include the files used
+bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+Stack Overflow. (2018). Python Notes For Professionals. Retrieved from https://goalkicker.com/PythonBook/
 
+Cui, Y. (2022, February 2). How to Write Proper Docstrings for a Python Function. Retrieved June 7, 2023, from Medium website: https://betterprogramming.pub/how-to-write-proper-docstrings-for-a-python-function-7c40b8d2e153
