@@ -34,65 +34,38 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
+    
     print('Welcome! Explore the dataset on US Bikeshare Usage.',
          '\nWe have data on the following cities: Chicago, New York City, and Washington.')
-    # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    while True:
-        city = str(input('Would you like to see data for Chicago, New York City, or Washington?\n')).lower()
-        if city.lower() not in ['chicago','new york city','washington']:
-            print('Invalid city provided.')
-        else:
-            break
-
+    
+    # get user input for city (chicago, new york city, washington)
+    city = check_entry('Would you like to see data for Chicago, New York City, or Washington?\n',
+                      cities)
+    
     # get use input for how the data should be filtered
-    while True:
-        filter_options = str(input('Would you like to filter the data by month, day, all or none?\n')).lower()
-        if filter_options.lower() not in ['month','day','all','none']:
-            print('Invalid answer. Input should either be: month, day, all, or none.')
-        else:
-            break
+    filter_options = check_entry('Would you like to filter the data by month, day, all or none?\n',
+                                ['month','day','all','none'])
+    
     # assigning 'none' to month and day of the week for when the user does not want to filter for anything
     if filter_options == 'none': 
         month = 'none'
         day = 'none'
+        
     elif filter_options == 'month': # get user input for month (all, january, february, ... , june)
-        while True:
-            month = str(input('Which month: January, February, March, April, May, or June?\n')).lower()
-            if month not in ['january', 'february', 'march', 'april', 'may', 'june']:
-                print('Invalid month. Please type the full name of the month.')
-            else:
-                day = 'none'
-                break
+        month = check_entry('Which month: January, February, March, April, May, or June?\n',
+                           months)
+        day = 'none'
+        
     elif filter_options == 'day': # get user input for day of week (all, monday, tuesday, ... sunday)
-        while True:
-            try:
-                day = int(input('Which day? Insert a number between 0 and 6 (Monday = 0 and Sunday = 6).\n'))
-                if day not in [0, 1, 2, 3, 4, 5, 6]:
-                    print('Invalid day selected.')
-                else:
-                    month = 'none'
-                    break
-            except ValueError:
-                print('Invalid format. Insert an Integer between 0 and 6.')
+        day = check_entry('Which day? Insert a number between 0 and 6 (Monday = 0 and Sunday = 6).\n',
+                          [0, 1, 2, 3, 4, 5, 6])
+        month = 'none'
             
     elif filter_options == 'all': # get user input for both day of week and month
-        while True:
-            month = str(input('Which month: January, February, March, April, May, or June?\n')).lower()
-            if month not in ['january', 'february', 'march', 'april', 'may', 'june']:
-                print('Invalid month. Input should either be January, February, March, April, May, or June.')
-            else:
-                break
-        while True:
-            try:
-                day = int(input('Which day? Insert a number between 0 and 6 (Monday = 0 and Sunday = 6)\n'))
-                if day not in [0, 1, 2, 3, 4, 5, 6]:
-                    print('Invalid day selected.')
-                else:
-                    month = 'none'
-                    break
-            except ValueError:
-                print('Invalid format. Insert an Integer between 0 and 6.')
-            
+        month = str(input('Which month: January, February, March, April, May, or June?\n')).lower()
+        day = check_entry('Which day? Insert a number between 0 and 6 (Monday = 0 and Sunday = 6).\n',
+                          [0, 1, 2, 3, 4, 5, 6])
+    
     print('-'*79)
     return city, month, day
 
